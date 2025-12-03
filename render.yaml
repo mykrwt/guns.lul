@@ -1,0 +1,14 @@
+services:
+  - type: web
+    name: cosmic-teams
+    plan: free
+    env: python
+
+    buildCommand: ./build.sh
+    startCommand: gunicorn -c gunicorn_config.py wsgi:app
+
+    envVars:
+      - key: RENDER
+        value: "true"
+      - key: PYTHON_VERSION
+        value: "3.11.9"
